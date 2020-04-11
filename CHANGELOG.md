@@ -17,3 +17,7 @@ Package initialization
 ## 1.0.3
 Package initialization
 * Readme edit.
+
+## 1.0.4
+Package initialization
+* Readme edit.
