@@ -10,6 +10,6 @@ Package initialization
 Package initialization
 * Example maintained.
 
-## 1.0.1
+## 1.0.2
 Package initialization
 * Route Settings removed.
