@@ -2,7 +2,7 @@ name: progressdialog
 description: Flutter Progress Dialog.
 version: 1.0.0
 author: Josteve Adekanbi
-homepage:
+homepage: https://github.com/JosteveGit/progress_dialog
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
