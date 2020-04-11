@@ -103,7 +103,8 @@ class ProgressDialog {
   void show({
     String title,
     @required String message,
-    ProgressDialogLayout layout = ProgressDialogLayout.rowWithCircularProgressIndicator,
+    ProgressDialogLayout layout =
+        ProgressDialogLayout.rowWithCircularProgressIndicator,
     bool centerTile = false,
     TextStyle titleStyle,
     TextStyle messageStyle,
