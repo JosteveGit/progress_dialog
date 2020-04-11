@@ -13,3 +13,7 @@ Package initialization
 ## 1.0.2
 Package initialization
 * Route Settings removed.
+
+## 1.0.3
+Package initialization
+* Readme edit.
