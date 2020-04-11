@@ -169,28 +169,35 @@ class ProgressDialog {
   /// If the [layout] is [ProgressDialogLayout.columnWithLinearProgressIndicator], it returns a [ProgressDialog] with a [LinearProgressIndicator] above the [message] [Text].
   _getBody(ProgressDialogLayout layout, String messageString,
       TextStyle messageStyle) {
-    Widget message = _message(messageString, messageStyle);
+    Widget message;
     switch (layout) {
       case ProgressDialogLayout.columnWithCircularProgressIndicator:
+        message = _message(messageString, messageStyle, false);
         return _buildColumnCircularProgressDialog(message);
         break;
       case ProgressDialogLayout.columnReveredWithCircularProgressIndicator:
+        message = _message(messageString, messageStyle, false);
         return _buildColumnCircularProgressDialog(message, true);
         break;
       case ProgressDialogLayout.rowWithCircularProgressIndicator:
+        message = _message(messageString, messageStyle, true);
         return _buildRowCircularProgressDialog(message);
         break;
       case ProgressDialogLayout.columnWithLinearProgressIndicator:
+        message = _message(messageString, messageStyle, false);
         return _buildLinearProgressDialog(message);
         break;
       case ProgressDialogLayout.columnReversedWithLinearProgressIndicator:
+        message = _message(messageString, messageStyle, false);
         return _buildLinearProgressDialog(message, true);
         break;
     }
   }
 
   /// The [message] wrapped in a [Text] and the [Text] wrapped in [Expanded].
-  Widget _message(String message, messageStyle) => Expanded(
+  Widget _message(String message, messageStyle, isRow) {
+    if (isRow) {
+      return Expanded(
         child: Text(
           message,
           textAlign: TextAlign.left,
@@ -198,6 +205,17 @@ class ProgressDialog {
           style: messageStyle,
         ),
       );
+    } else {
+      return Text(
+        message,
+        textAlign: TextAlign.left,
+        overflow: TextOverflow.clip,
+        style: messageStyle,
+      );
+    }
+  }
+
+
 
   Widget _buildRowCircularProgressDialog(Widget message) {
     return Row(
