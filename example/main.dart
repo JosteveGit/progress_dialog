@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:simpleprogressdialog/progressdialog.dart';
+import 'package:simpleprogressdialog/simpleprogressdialog.dart';
 
 class Home extends StatelessWidget {
   @override

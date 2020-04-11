@@ -70,7 +70,6 @@ class ProgressDialog {
   final bool useRootNavigator;
 
   ///From showDialog in [Dialog].
-  final RouteSettings routeSettings;
 
   ///The shape of the dialog can be StadiumBorder or RoundedRectangleBorder.
   final ShapeBorder shape;
@@ -89,7 +88,6 @@ class ProgressDialog {
       {this.context,
       this.barrierDismissible = true,
       this.useRootNavigator = true,
-      this.routeSettings,
       this.shape,
       this.elevation = 2});
 
@@ -119,7 +117,6 @@ class ProgressDialog {
       context: context,
       barrierDismissible: barrierDismissible,
       useRootNavigator: useRootNavigator,
-      routeSettings: routeSettings,
       builder: (context) {
         _dialogContext = context;
         _canPop = true;
