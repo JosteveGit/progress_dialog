@@ -2,7 +2,7 @@
 Simple Progress Dialog is an open source package with a customizable and easy to use and tweak Progress Dialog
 
 ## Widgets
- *  `ProgressDialog` - Creates a Progess Dialog for you
+ *  `ProgressDialog` - Creates a Progress Dialog for you
 
 ## Example
 ```dart
