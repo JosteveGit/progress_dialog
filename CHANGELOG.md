@@ -25,3 +25,9 @@ Package initialization
 ## 1.0.5
 Package initialization
 * Bug fixes.
+
+## 1.0.6
+Package updates
+* Includes `ProgressDialog` - That creates the progress dialog.
+* Includes `MaterialProgressDialogLayout` - That allows the specification of Material Progress Dialog layout.
+* Includes `CupertinoProgressDialogLayout` - That allows the specification of Material Progress Dialog layout.

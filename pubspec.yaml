@@ -1,6 +1,6 @@
 name: simpleprogressdialog
 description: Simple Flutter Progress Dialog that giving access to the ability to style, position and customize the content (message, title and progress indicator) .
-version: 1.0.5
+version: 1.0.6
 homepage: https://github.com/JosteveGit/progress_dialog
 
 environment:
