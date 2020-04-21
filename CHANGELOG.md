@@ -31,3 +31,7 @@ Package updates
 * Includes `ProgressDialog` - That creates the progress dialog.
 * Includes `MaterialProgressDialogLayout` - That allows the specification of Material Progress Dialog layout.
 * Includes `CupertinoProgressDialogLayout` - That allows the specification of Material Progress Dialog layout.
+
+## 1.0.7
+Package updates
+* Readme edit.
