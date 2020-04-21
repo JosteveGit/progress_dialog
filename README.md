@@ -5,7 +5,7 @@ Simple Progress Dialog is an open source package with a customizable and easy to
  *  `ProgressDialog` - Creates a Progess Dialog for you
 
 ## Example
-```
+```dart
 import 'dart:async';
 
 import 'package:flutter/material.dart';
