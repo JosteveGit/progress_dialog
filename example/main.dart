@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:simpleprogressdialog/cupertino_dialog_builder.dart';
-import 'package:simpleprogressdialog/material_dialog_builder.dart';
+import 'package:simpleprogressdialog/builders/cupertino_dialog_builder.dart';
+import 'package:simpleprogressdialog/builders/material_dialog_builder.dart';
 import 'package:simpleprogressdialog/simpleprogressdialog.dart';
 
 // ignore: must_be_immutable

@@ -12,7 +12,7 @@ class DialogBuilder {
     else if (centerTitle)
       return Center(
         child: Text(
-          title,
+          title ?? "",
           style: titleStyle,
         ),
       );

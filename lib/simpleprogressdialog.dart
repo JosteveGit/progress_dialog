@@ -3,13 +3,12 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'cupertino_dialog_builder.dart';
-import 'dialog_builder.dart';
-import 'material_dialog_builder.dart';
+import 'builders/cupertino_dialog_builder.dart';
+import 'builders/dialog_builder.dart';
+import 'builders/material_dialog_builder.dart';
 
 ///A Customizable Progress Dialog.
 class ProgressDialog {
-
   ///The context of the dialog :CANNOT BE NULL.
   BuildContext context;
 
@@ -34,11 +33,11 @@ class ProgressDialog {
 
   ProgressDialog(
       {this.context,
-        this.barrierDismissible = true,
-        this.useRootNavigator = true,
-        this.routeSettings,
-        this.shape,
-        this.elevation = 2});
+      this.barrierDismissible = true,
+      this.useRootNavigator = true,
+      this.routeSettings,
+      this.shape,
+      this.elevation = 2});
 
   ///Method to show a material dialog with parameters; [title], [message], [layout], [centerTile], [titleStyle], [messageStyle], [contentPadding], [backGroundColor].
   ///If [title] is null, the space for [title] text will also be gone.
@@ -51,42 +50,41 @@ class ProgressDialog {
   ///[backGroundColor] : to change the background color of the dialog.
   void showMaterial(
       {String title,
-        String message,
-        MaterialProgressDialogLayout layout = MaterialProgressDialogLayout.rowWithCircularProgressIndicator,
-        bool centerTitle = false,
-        TextStyle titleStyle,
-        TextStyle messageStyle,
-        EdgeInsets contentPadding,
-        Color backgroundColor = Colors.white}) {
+      String message,
+      MaterialProgressDialogLayout layout =
+          MaterialProgressDialogLayout.rowWithCircularProgressIndicator,
+      bool centerTitle = false,
+      TextStyle titleStyle,
+      TextStyle messageStyle,
+      EdgeInsets contentPadding,
+      Color backgroundColor = Colors.white}) {
     assert(context != null);
     assert(useRootNavigator != null);
-    assert(_canPop == false);
-    if (_canShow()) {
-      _canPop = true;
-      showDialog(
-        context: context,
-        barrierDismissible: barrierDismissible,
-        useRootNavigator: useRootNavigator,
-        builder: (context) {
-          return SimpleDialog(
-            backgroundColor:
-            DialogBuilder.getBackgroundColor(backgroundColor, layout),
-            title: DialogBuilder.getTitle(title, centerTitle, titleStyle, layout),
-            shape: MaterialDialogBuilder.getShape(shape),
-            elevation: DialogBuilder.getElevation(elevation, layout),
-            contentPadding: MaterialDialogBuilder.getPadding(contentPadding),
-            children: <Widget>[
-              MaterialDialogBuilder.getBody(layout, message, messageStyle)
-            ],
-          );
-        },
-      );
-    } else {
-      dismiss();
-      throw new Exception("Attempt to show more than one dialog at a time. Consider dimissing the a showing dialog before showing another.");
+    if (centerTitle == null) {
+      centerTitle = false;
     }
+    if (layout == null) {
+      layout = MaterialProgressDialogLayout.rowWithCircularProgressIndicator;
+    }
+    showDialog(
+      context: context,
+      barrierDismissible: barrierDismissible,
+      useRootNavigator: useRootNavigator,
+      builder: (context) {
+        return SimpleDialog(
+          backgroundColor:
+              DialogBuilder.getBackgroundColor(backgroundColor, layout),
+          title: DialogBuilder.getTitle(title, centerTitle, titleStyle, layout),
+          shape: MaterialDialogBuilder.getShape(shape),
+          elevation: DialogBuilder.getElevation(elevation, layout),
+          contentPadding: MaterialDialogBuilder.getPadding(contentPadding),
+          children: <Widget>[
+            MaterialDialogBuilder.getBody(layout, message, messageStyle)
+          ],
+        );
+      },
+    );
   }
-
 
   ///Method to show a cupertino dialog with parameters; [title], [message], [layout], [centerTile], [titleStyle], [messageStyle], [contentPadding], [backGroundColor].
   ///If [title] is null, the space for [title] text will also be gone.
@@ -99,41 +97,39 @@ class ProgressDialog {
   ///[backGroundColor] : to change the background color of the dialog.
   void showCupertino(
       {String title,
-        String message,
-        CupertinoProgressDialogLayout layout =
-            CupertinoProgressDialogLayout.rowWithCircularActivityIndicator,
-        bool centerTitle = true,
-        TextStyle titleStyle,
-        TextStyle messageStyle,
-        EdgeInsets contentPadding,
-        Color backgroundColor = Colors.white}) {
+      String message,
+      CupertinoProgressDialogLayout layout =
+          CupertinoProgressDialogLayout.rowWithCircularActivityIndicator,
+      bool centerTitle = true,
+      TextStyle titleStyle,
+      TextStyle messageStyle,
+      EdgeInsets contentPadding,
+      Color backgroundColor = Colors.white}) {
     assert(context != null);
     assert(useRootNavigator != null);
-    if (_canShow()) {
-      _canPop = true;
-      showCupertinoDialog(
-        context: context,
-        builder: (context) {
-          return SimpleDialog(
-            backgroundColor:
-            DialogBuilder.getBackgroundColor(backgroundColor, layout),
-            shape: CupertinoDialogBuilder.getShape(shape),
-            title: DialogBuilder.getTitle(title, centerTitle, titleStyle, layout),
-            contentPadding: CupertinoDialogBuilder.getPadding(contentPadding),
-            elevation: DialogBuilder.getElevation(elevation, layout),
-            children: [
-              CupertinoDialogBuilder.getBody(layout, message, messageStyle),
-            ],
-          );
-        },
-      );
-    } else {
-      dismiss();
-      throw new Exception("Attempt to show more than one dialog at a time. Consider dimissing the a showing dialog before showing another.");
+    if (centerTitle == null) {
+      centerTitle = true;
     }
+    if (layout == null) {
+      layout = CupertinoProgressDialogLayout.rowWithCircularActivityIndicator;
+    }
+    showCupertinoDialog(
+      context: context,
+      builder: (context) {
+        return SimpleDialog(
+          backgroundColor:
+              DialogBuilder.getBackgroundColor(backgroundColor, layout),
+          shape: CupertinoDialogBuilder.getShape(shape),
+          title: DialogBuilder.getTitle(title, centerTitle, titleStyle, layout),
+          contentPadding: CupertinoDialogBuilder.getPadding(contentPadding),
+          elevation: DialogBuilder.getElevation(elevation, layout),
+          children: [
+            CupertinoDialogBuilder.getBody(layout, message, messageStyle),
+          ],
+        );
+      },
+    );
   }
-
-  bool _canShow() => !_canPop;
 
   ///Method to show an adaptive(shows a material dialog on Android and a cupertino dialog on iOS) dialog with parameters; [title], [message], [layout], [centerTile], [titleStyle], [messageStyle], [contentPadding], [backGroundColor].
   ///If [title] is null, the space for [title] text will also be gone.
@@ -146,16 +142,16 @@ class ProgressDialog {
   ///[backGroundColor] : to change the background color of the dialog.
   void showAdaptive(
       {String title,
-        String message,
-        CupertinoProgressDialogLayout layoutForIOS =
-            CupertinoProgressDialogLayout.rowWithCircularActivityIndicator,
-        MaterialProgressDialogLayout layoutForAndroid =
-            MaterialProgressDialogLayout.rowWithCircularProgressIndicator,
-        bool centerTitle,
-        TextStyle titleStyle,
-        TextStyle messageStyle,
-        EdgeInsets contentPadding,
-        Color backgroundColor = Colors.white}) {
+      String message,
+      CupertinoProgressDialogLayout layoutForIOS =
+          CupertinoProgressDialogLayout.rowWithCircularActivityIndicator,
+      MaterialProgressDialogLayout layoutForAndroid =
+          MaterialProgressDialogLayout.rowWithCircularProgressIndicator,
+      bool centerTitle,
+      TextStyle titleStyle,
+      TextStyle messageStyle,
+      EdgeInsets contentPadding,
+      Color backgroundColor = Colors.white}) {
     if (Platform.isIOS) {
       return showCupertino(
           title: title,
@@ -180,12 +176,10 @@ class ProgressDialog {
 
   ///Dismisses the dialog if it is shown.
   void dismiss() {
-    if (_canPop) {
+    try {
       Navigator.pop(context);
-      _canPop = false;
-      return;
+    } catch (e) {
+      print(e);
     }
-    throw new Exception("Attempt to dismiss a ProgressDialog that has not been shown. Consider showing a dialog before dimissing.");
   }
 }
-

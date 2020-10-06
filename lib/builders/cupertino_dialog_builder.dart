@@ -62,7 +62,7 @@ class CupertinoDialogBuilder {
         SizedBox(
           width: 15,
         ),
-        message
+        message ?? ""
       ],
     );
   }

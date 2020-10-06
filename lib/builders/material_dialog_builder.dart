@@ -66,7 +66,7 @@ class MaterialDialogBuilder {
     if (isRow) {
       return Expanded(
         child: Text(
-          message,
+          message ?? "",
           textAlign: TextAlign.left,
           overflow: TextOverflow.clip,
           style: messageStyle,
@@ -74,7 +74,7 @@ class MaterialDialogBuilder {
       );
     } else {
       return Text(
-        message,
+        message ?? "",
         textAlign: TextAlign.left,
         overflow: TextOverflow.clip,
         style: messageStyle,
